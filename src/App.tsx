@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/common/Footer";
+import "react-lazy-load-image-component/src/effects/blur.css";
 const CartPage = React.lazy(() => import("./pages/Cart"));
 const RegisterPage = React.lazy(() => import("./pages/Register"));
 const LoginPage = React.lazy(() => import("./pages/Login"));

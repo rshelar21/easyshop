@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface ICategoryCards {
   id: string;
@@ -42,9 +43,10 @@ const CategoryCard: React.FC<{
     >
       <div className="w-full p-2 rounded-lg shadow-lg hover:scale-110 transition-all ease-in-out cursor-pointer">
         <div className="">
-          <img
+          <LazyLoadImage
             src={`/assets/${category.img}`}
-            alt=""
+            alt="Image Alt"
+            effect="blur"
             className="w-full h-[250px] object-contain"
           />
         </div>

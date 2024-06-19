@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* center */}
-          <div className="px-3 hidden md:inline-block flex-grow ">
+          {/* <div className="px-3 hidden md:inline-block flex-grow ">
             <div
               className="flex bg-yellow-400 rounded-sm overflow-hidden
             items-center cursor-pointer hover:bg-yellow-500"
@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
               />
               <MagnifyingGlassIcon className="h-6 w-14" />
             </div>
-          </div>
+          </div> */}
 
           {/* right */}
 
@@ -142,7 +142,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-amazon_blue md:hidden px-2 pb-2">
+        {/* <div className="bg-amazon_blue md:hidden px-2 pb-2">
           <div
             className="flex bg-yellow-400 rounded-sm overflow-hidden
             items-center cursor-pointer hover:bg-yellow-500"
@@ -156,7 +156,7 @@ const Navbar: React.FC = () => {
             />
             <MagnifyingGlassIcon className="h-6 w-14" />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

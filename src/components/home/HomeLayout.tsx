@@ -2,8 +2,9 @@ import React from "react";
 import Banner from "./Banner";
 import CategoryCardsList from "./CategoryCardsList";
 import DealsSection from "./DealsSection";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const HomeLayout : React.FC = () => {
+const HomeLayout: React.FC = () => {
   return (
     <>
       <div className="mx-auto max-w-screen-2xl relative mt-[56px]">
@@ -12,9 +13,10 @@ const HomeLayout : React.FC = () => {
           <DealsSection />
 
           <div className="w-full ">
-            <img
+            <LazyLoadImage
               src="https://links.papareact.com/dyz"
-              alt=""
+              alt="Image Alt"
+              effect="blur"
               className="w-full h-[150px]  md:h-full object-cover relative"
             />
           </div>

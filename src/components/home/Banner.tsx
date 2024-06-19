@@ -1,6 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Banner: React.FC = () => {
   return (
@@ -16,18 +17,25 @@ const Banner: React.FC = () => {
           interval={3000}
         >
           <div>
-            <img
-              loading="lazy"
+            <LazyLoadImage
               src="/assets/slider1.webp"
               alt="Banner1"
-              className=""
+              effect="blur"
             />
           </div>
           <div>
-            <img loading="lazy" src="/assets/slider3.webp" alt="Banner1" />
+            <LazyLoadImage
+              src="/assets/slider3.webp"
+              alt="Banner3"
+              effect="blur"
+            />
           </div>
           <div>
-            <img loading="lazy" src="/assets/slider4.webp" alt="Banner1" />
+            <LazyLoadImage
+              src="/assets/slider4.webp"
+              alt="Banner4"
+              effect="blur"
+            />
           </div>
         </Carousel>
       </div>

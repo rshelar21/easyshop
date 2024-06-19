@@ -9,7 +9,7 @@ interface Props {
 const OrdersCardsList: React.FC<Props> = ({ products }) => {
   return (
     <>
-      <div className="flex p-1 space-x-2">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3">
         {products?.map((item, index) => (
           <OrdersCard product={item} key={index} />
         ))}

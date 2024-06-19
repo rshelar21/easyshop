@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const DealsSection : React.FC = () => {
+const DealsSection: React.FC = () => {
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-2 z-20 px-4 gap-x-4 pb-6">
       <div className="w-full col-span-1 shadow-xl flex flex-col gap-y-2">
@@ -15,10 +16,10 @@ const DealsSection : React.FC = () => {
             </div>
           </div>
           <div className="col-span-1">
-            <img
+            <LazyLoadImage
               src="/assets/home1.webp"
-              alt=""
-              className="w-full object-contain relative"
+              alt="Image Alt"
+              effect="blur"
             />
           </div>
         </div>
@@ -58,9 +59,10 @@ const DealsSection : React.FC = () => {
               </div>
 
               <div className="relative w-full ">
-                <img
+                <LazyLoadImage
                   src="/assets/event2.webp"
-                  alt=""
+                  alt="Image Alt"
+                  effect="blur"
                   className="w-full h-full aspect-auto"
                 />
               </div>
@@ -83,9 +85,10 @@ const DealsSection : React.FC = () => {
               </div>
 
               <div className="relative w-full ">
-                <img
+                <LazyLoadImage
                   src="/assets/event3.webp"
-                  alt=""
+                  alt="Image Alt"
+                  effect="blur"
                   className="w-full h-full aspect-auto"
                 />
               </div>

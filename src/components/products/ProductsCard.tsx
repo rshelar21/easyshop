@@ -3,6 +3,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, selectItems } from "../../feature/cartSlice";
 import { IProduct } from "../../interfaces/products";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
@@ -23,14 +24,18 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
 
-  console.log(cartItem, 'cartItem');
+  console.log(cartItem, "cartItem");
   const handleraAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     // console.log(product);
-    const list = cartItem.filter((item: ICart) => item?.productId === product?.productId);
+    const list = cartItem.filter(
+      (item: ICart) => item?.productId === product?.productId
+    );
     console.log(list);
 
     if (list.length) {
-      const index = cartItem.findIndex((item) => item?.productId === product.productId);
+      const index = cartItem.findIndex(
+        (item) => item?.productId === product.productId
+      );
       const newBasket = [...cartItem];
       if (index >= 0) {
         newBasket.splice(index, 1);
@@ -72,10 +77,11 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
         </p>
 
         <div className="w-[200px] h-[200px] mx-auto">
-          <img
+          <LazyLoadImage
             src={product?.image}
             alt="product-img"
-            className="w-full h-full object-contain"
+            className="w-full h-[200px] object-contain"
+            effect="blur"
           />
         </div>
         <h4 className="my-3">{product?.title}</h4>

@@ -1,6 +1,7 @@
 import React from "react";
-import ImageCard from "../common/ImageCard";
 import { IProduct } from "../../interfaces/products";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 
 interface Props {
   product: Partial<IProduct>;
@@ -11,10 +12,11 @@ const OrdersCard: React.FC<Props> = ({ product }) => {
     <>
       <div className="flex flex-col w-[200px] p-2 border items-center">
         <div className="h-[150px] w-[150px]">
-          <img
+           <LazyLoadImage
             src={product?.image}
-            alt="img"
-            className="object-contain h-full w-full"
+            alt="product-img"
+            className="object-contain h-[150px] w-full"
+            effect="blur"
           />
         </div>
         <div>
