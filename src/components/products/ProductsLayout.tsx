@@ -7,14 +7,14 @@ import ProductsCard from "./ProductsCard";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useSearchParams } from "react-router-dom";
 
-const ProductsLayout = () => {
+const ProductsLayout : React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filterdList, setFilterdList] = useState<IProduct[]>();
+
   const [checkBoxPrice, setCheckBoxPrice] = useState<string>("");
   const [checkBoxCategory, setCheckBoxCategory] = useState<string>("");
   const [checkBoxRating, setCheckBoxRating] = useState<string>("");
-  const [filterdList, setFilterdList] = useState<IProduct[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (searchParams.get("q")) {
@@ -27,41 +27,28 @@ const ProductsLayout = () => {
     queryFn: fetchProducts,
   });
 
-  // console.log(data);
-
   useEffect(() => {
-    if (data) {
-      setProducts(data);
+    if (data && data?.products) {
+      const productsArr = [...data.products];
       if (searchParams.get("q")) {
-        const result = data.filter(
-          (product: IProduct) => product.category === searchParams.get("q")
+        console.log("if");
+        const result = productsArr?.filter(
+          (product: IProduct) => product?.category === searchParams?.get("q")
         );
         setFilterdList(result);
-      } else {
-        setFilterdList(data);
       }
+      setFilterdList(productsArr);
+      setProducts(productsArr);
     }
-  }, [data]);
+  }, [data?.products]);
 
   useEffect(() => {
     handleFilterProducts();
-  }, [
-    searchQuery,
-    checkBoxPrice,
-    checkBoxCategory,
-    checkBoxRating,
-    searchParams,
-  ]);
+  }, [checkBoxPrice, checkBoxCategory, checkBoxRating, searchParams]);
 
   const handleFilterProducts = () => {
     let productsArr = [...products];
-    if (searchQuery != "") {
-      productsArr = productsArr.filter((product) =>
-        searchQuery === "" || null
-          ? product
-          : product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
+
     if (checkBoxPrice != "") {
       productsArr = productsArr.filter(
         (product) => product.price < Number(checkBoxPrice)
@@ -89,6 +76,7 @@ const ProductsLayout = () => {
   ) => {
     const { value, name } = e.target;
     if (type === "price") {
+      console.log(value);
       setCheckBoxPrice(value);
     }
     if (type === "category") {

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { StarIcon as StarOutlined } from "@heroicons/react/24/outline";
-import { Bars3CenterLeftIcon } from "@heroicons/react/24/solid";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import FormCheckbox from "../common/FormCheckbox";
 import { cn } from "../../utils/cn";
 
@@ -92,20 +90,19 @@ const ProductFilters: React.FC<IProductFiltersProps> = ({
               <h5 className="uppercase font-normal text-base text-[rgb(33, 33, 33)]">
                 Pricing
               </h5>
-              {/* <ChevronDownIcon className="w-5 h-5 text-gray-500" /> */}
             </div>
             <FormCheckbox
               handleSelectPrice={handleSelectPrice}
               type="price"
-              label="Under $100"
-              id="100"
+              label="Under ₹500"
+              id="500"
               checkBox={checkBoxPrice}
             />
             <FormCheckbox
               handleSelectPrice={handleSelectPrice}
               type="price"
-              label="$0 - $200"
-              id="200"
+              label="₹0 - ₹1000"
+              id="1000"
               checkBox={checkBoxPrice}
             />
           </div>

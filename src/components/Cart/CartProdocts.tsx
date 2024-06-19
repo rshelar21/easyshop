@@ -30,7 +30,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
     }
 
     if (type === "add") {
-      console.log("add", product);
+      // console.log("add", product);
       productData = [
         ...newBasket,
         {
@@ -44,7 +44,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
         })
       );
     } else if (type === "reduce") {
-      console.log("reduce", product);
+      // console.log("reduce", product);
       // @ts-ignore
       if (product?.quantity <= 1) {
         dispatch(
@@ -93,7 +93,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
               </p>
               <div className="">
                 <h3 className="mb-2 text-lg text-black font-medium">
-                  Rs. {Number(product?.price) * Number(product?.quantity)}
+                ₹{Number(product?.price) * Number(product?.quantity)}
                 </h3>
                 <div>
                   <div>

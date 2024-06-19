@@ -18,14 +18,14 @@ interface IProductCardProps {
 const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector(selectItems);
-  console.log(cartItem, "cartItem");
+
   const [rating] = useState<number>(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
 
   const handleraAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     const list = cartItem.filter((item: ICart) => item.id === product.id);
-    console.log(list);
+
     if (list.length) {
       const index = cartItem.findIndex((item) => item.id === product.id);
       const newBasket = [...cartItem];
@@ -87,7 +87,7 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
 
         <p className="text-xs my-2 line-clamp-2">{product?.description}</p>
 
-        <p className="mb-2 text-sm">${product?.price}</p>
+        <p className="mb-2 text-sm">₹{product?.price}</p>
 
         <button className="button mt-auto" onClick={handleraAddCart}>
           Add to basket

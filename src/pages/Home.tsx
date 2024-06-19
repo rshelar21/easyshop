@@ -1,27 +1,13 @@
-import Banner from "../components/Home/Banner";
-import CategoryCardsList from "../components/Home/CategoryCardsList";
-import DealsSection from "../components/Home/DealsSection";
+import React from "react";
+import Layout from "../components/common/Layout";
+import HomeLayout from "../components/home/HomeLayout";
 
-const Home = () => {
+const HomePage: React.FC = () => {
   return (
-    <>
-      <div className="mx-auto max-w-screen-2xl relative mt-[56px]">
-        <Banner />
-        <div className="mt-0 md:-mt-60 relative">
-          <DealsSection />
-
-          <div className="w-full ">
-            <img
-              src="https://links.papareact.com/dyz"
-              alt=""
-              className="w-full h-[150px]  md:h-full object-cover relative"
-            />
-          </div>
-        </div>
-        <CategoryCardsList />
-      </div>
-    </>
+    <Layout title="Home">
+      <HomeLayout />
+    </Layout>
   );
 };
 
-export default Home;
+export default HomePage;

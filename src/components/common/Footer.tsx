@@ -12,7 +12,7 @@ const githubLink = "https://github.com/rshelar21";
 const portfolioLink = "https://rohan-portfolio-nu.vercel.app/";
 const linkedinLink = "https://www.linkedin.com/in/rohan-shelar-826631218/";
 
-const Footer = () => {
+const Footer : React.FC = () => {
   return (
     <div className="bg-amazon_blue w-full relative py-8  px-10 max-w-[450px]:px-16">
       <div className="flex gap-4 text-white flex-col md:flex-row">

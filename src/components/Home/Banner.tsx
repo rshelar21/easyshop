@@ -2,7 +2,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-const Banner = () => {
+const Banner: React.FC = () => {
   return (
     <>
       <div className="relative">
@@ -16,7 +16,12 @@ const Banner = () => {
           interval={3000}
         >
           <div>
-            <img loading="lazy" src="/assets/slider1.jpg" alt="Banner1" className=""/>
+            <img
+              loading="lazy"
+              src="/assets/slider1.jpg"
+              alt="Banner1"
+              className=""
+            />
           </div>
           <div>
             <img loading="lazy" src="/assets/slider3.jpg" alt="Banner1" />

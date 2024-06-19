@@ -16,14 +16,14 @@ export const toastError = (message) => {
 };
 
 export const toastWarning = (message) => {
-  toast.warning(message, {
+  toast(message, {
     position: "top-center",
     duration: 4000,
   });
 };
 
 export const toastInfo = (message) => {
-  toast.info(message, {
+  toast(message, {
     position: "top-center",
     duration: 4000,
   });

@@ -1,5 +1,13 @@
+import React from "react";
+import Layout from "../components/common/Layout";
 import ProductsLayout from "../components/products/ProductsLayout";
 
-const Products = () => <ProductsLayout />;
+const ProductsPage: React.FC = () => {
+  return (
+    <Layout title="Products">
+      <ProductsLayout />
+    </Layout>
+  );
+};
 
-export default Products;
+export default ProductsPage;

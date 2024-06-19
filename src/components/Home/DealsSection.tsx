@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DealsSection = () => {
+const DealsSection : React.FC = () => {
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-2 z-20 px-4 gap-x-4 pb-6">
       <div className="w-full col-span-1 shadow-xl flex flex-col gap-y-2">
