@@ -23,11 +23,14 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
 
+  console.log(cartItem, 'cartItem');
   const handleraAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const list = cartItem.filter((item: ICart) => item.id === product.id);
+    // console.log(product);
+    const list = cartItem.filter((item: ICart) => item?.productId === product?.productId);
+    console.log(list);
 
     if (list.length) {
-      const index = cartItem.findIndex((item) => item.id === product.id);
+      const index = cartItem.findIndex((item) => item?.productId === product.productId);
       const newBasket = [...cartItem];
       if (index >= 0) {
         newBasket.splice(index, 1);

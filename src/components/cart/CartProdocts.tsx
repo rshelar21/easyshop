@@ -14,13 +14,14 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
   const cartItems: ICart[] = useSelector(selectItems);
   const dispatch = useDispatch();
 
+
   const handlerRemoveItem = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: number,
     type?: string
   ) => {
     let productData = [];
-    const index = cartItems.findIndex((item) => item.id === id);
+    const index = cartItems.findIndex((item) => item.productId === id);
     const newBasket = [...cartItems];
     if (index >= 0) {
       newBasket.splice(index, 1);
@@ -99,7 +100,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
                   <div>
                     <button
                       className="button"
-                      onClick={(e) => handlerRemoveItem(e, product?.id, "reduce")}
+                      onClick={(e) => handlerRemoveItem(e, Number(product?.productId), "reduce")}
                     >
                       <HiOutlineMinusSm />
                     </button>
@@ -107,7 +108,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
                     <button
                       className="button"
                       onClick={(e) =>
-                        handlerRemoveItem(e, product?.id, "add")
+                        handlerRemoveItem(e, Number(product?.productId), "add")
                       }
                     >
                       <HiOutlinePlusSm />
@@ -120,7 +121,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
             <div className="">
               <button
                 className="whitespace-nowrap button"
-                onClick={(e) => handlerRemoveItem(e, product?.id, "delete")}
+                onClick={(e) => handlerRemoveItem(e, Number(product?.productId), "delete")}
               >
                 Remove from cart
               </button>
