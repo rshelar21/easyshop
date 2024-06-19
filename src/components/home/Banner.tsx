@@ -18,16 +18,16 @@ const Banner: React.FC = () => {
           <div>
             <img
               loading="lazy"
-              src="/assets/slider1.jpg"
+              src="/assets/slider1.webp"
               alt="Banner1"
               className=""
             />
           </div>
           <div>
-            <img loading="lazy" src="/assets/slider3.jpg" alt="Banner1" />
+            <img loading="lazy" src="/assets/slider3.webp" alt="Banner1" />
           </div>
           <div>
-            <img loading="lazy" src="/assets/slider4.jpg" alt="Banner1" />
+            <img loading="lazy" src="/assets/slider4.webp" alt="Banner1" />
           </div>
         </Carousel>
       </div>

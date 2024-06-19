@@ -16,7 +16,7 @@ const DealsSection : React.FC = () => {
           </div>
           <div className="col-span-1">
             <img
-              src="/assets/home1.jpg"
+              src="/assets/home1.webp"
               alt=""
               className="w-full object-contain relative"
             />

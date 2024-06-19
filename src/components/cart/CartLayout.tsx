@@ -24,6 +24,7 @@ const CartLayout = () => {
   const mutation = useMutation({
     mutationFn: createCheckoutSession,
     onError: (error: any) => {
+      console.log(error);
       toastError(error.message);
     },
     onSuccess: async (data: any) => {

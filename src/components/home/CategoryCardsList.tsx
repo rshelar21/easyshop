@@ -21,7 +21,7 @@ const categoryList: ICategoryCards[] = [
   {
     id: "0102",
     title: "electronics",
-    img: "computer.jpg",
+    img: "computer.webp",
   },
   {
     id: "0102",

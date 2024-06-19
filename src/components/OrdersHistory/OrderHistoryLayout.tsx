@@ -6,6 +6,7 @@ import { IOrders } from "../../interfaces/orders";
 import { getOrdersHistory } from "../../hooks/query/orders";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const OrderHistoryLayout: React.FC = () => {
   const user = useSelector(selectUser);
@@ -24,66 +25,76 @@ const OrderHistoryLayout: React.FC = () => {
           </div>
 
           <div className="p-2">
-            {data?.product?.map((item: IOrders, index: number) => {
-              return (
-                <>
-                  <div key={index} className="border border-gray-300">
-                    <div
-                      className="bg-gray-200 border border-gray-300 border-collapse
+            {isLoading ? (
+              <div className="flex justify-center items-center w-full h-full">
+                <ClipLoader color="#36d7b7" />
+              </div>
+            ) : isError ? (
+              <h1 className="text-center">
+                something went wrong, please try again later.
+              </h1>
+            ) : null}
+            {Array.isArray(data?.product) &&
+              data?.product?.map((item: IOrders, index: number) => {
+                return (
+                  <>
+                    <div key={index} className="border border-gray-300">
+                      <div
+                        className="bg-gray-200 border border-gray-300 border-collapse
                   flex items-center space-x-3"
-                    >
-                      <div className="border-r border-gray-300 p-3 ">
-                        <p>Order Placed</p>
+                      >
+                        <div className="border-r border-gray-300 p-3 ">
+                          <p>Order Placed</p>
 
-                        <p>{dayjs(item?.createdAt).format("DD-MM-YYYY")}</p>
-                      </div>
-                      <div className="border-r border-gray-300 p-3">
-                        <p>Total Amount</p>
-                        <p>Rs.{item?.amount}</p>
+                          <p>{dayjs(item?.createdAt).format("DD-MM-YYYY")}</p>
+                        </div>
+                        <div className="border-r border-gray-300 p-3">
+                          <p>Total Amount</p>
+                          <p>Rs.{item?.amount}</p>
+                        </div>
+
+                        <div className="border-gray-300 p-3 flex-grow">
+                          <p className="text-blue-500 text-right">
+                            {item?.products.length} Items
+                          </p>
+                        </div>
                       </div>
 
-                      <div className="border-gray-300 p-3 flex-grow">
-                        <p className="text-blue-500 text-right">
-                          {item?.products.length} Items
-                        </p>
+                      <div>
+                        <OrdersCards products={item?.products} />
                       </div>
-                    </div>
-
-                    <div>
-                      <OrdersCards products={item?.products} />
-                    </div>
-                    <div className="p-2">
-                      <h2 className="text-black text-2xl font-medium">
-                        Payment Details :-
-                      </h2>
-                      <div className="flex ">
-                        <div>
-                          <p className="payment-details">
-                            Amount:- Rs. {item?.amount}
-                          </p>
-                          <p className="payment-details line-clamp-2">
-                            Address:- {item?.address}
-                          </p>
-                          <p className="payment-details">
-                            Payment Type:- {item.paymentType}
-                          </p>
-                          <p className="payment-details">
-                            Payment Status:- {item?.paymentStatus}
-                          </p>
-                          <p className="payment-details">
-                            Purchased Date:-{" "}
-                            {dayjs(item?.createdAt).format("DD-MM-YYYY")}
-                          </p>
-                          <button className="button">
-                            Payment Successful !
-                          </button>
+                      <div className="p-2">
+                        <h2 className="text-black text-2xl font-medium">
+                          Payment Details :-
+                        </h2>
+                        <div className="flex ">
+                          <div>
+                            <p className="payment-details">
+                              Amount:- Rs. {item?.amount}
+                            </p>
+                            <p className="payment-details line-clamp-2">
+                              Address:- {item?.address}
+                            </p>
+                            <p className="payment-details">
+                              Payment Type:- {item.paymentType}
+                            </p>
+                            <p className="payment-details">
+                              Payment Status:- {item?.paymentStatus}
+                            </p>
+                            <p className="payment-details">
+                              Purchased Date:-{" "}
+                              {dayjs(item?.createdAt).format("DD-MM-YYYY")}
+                            </p>
+                            <button className="button">
+                              Payment Successful !
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              );
-            })}
+                  </>
+                );
+              })}
 
             {!data?.product?.length && (
               <div className="flex justify-center">
