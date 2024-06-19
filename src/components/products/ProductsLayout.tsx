@@ -27,19 +27,22 @@ const ProductsLayout: React.FC = () => {
     queryFn: fetchProducts,
   });
 
+  const dataList = data?.products
+
   useEffect(() => {
-    if (data && data?.products) {
-      const productsArr = [...data.products];
+    if (data && dataList) {
+      setProducts(dataList);
       if (searchParams.get("q")) {
-        const result = productsArr?.filter(
+        console.log(searchParams.get("q"));
+        const result = dataList?.filter(
           (product: IProduct) => product?.category === searchParams?.get("q")
         );
         setFilterdList(result);
+      } else {
+        setFilterdList(dataList);
       }
-      setFilterdList(productsArr);
-      setProducts(productsArr);
     }
-  }, [data?.products]);
+  }, [data, dataList]);
 
   useEffect(() => {
     handleFilterProducts();
