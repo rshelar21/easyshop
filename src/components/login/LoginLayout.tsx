@@ -35,7 +35,6 @@ const LoginLayout: React.FC = () => {
       );
     },
     onError: (error: any) => {
-      console.log("error", error.message);
       toastError(error.message);
     },
   });

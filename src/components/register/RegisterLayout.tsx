@@ -29,7 +29,6 @@ const RegisterLayout: React.FC = () => {
   const mutation = useMutation({
     mutationFn: registerUser,
     onSuccess: (data: any) => {
-      console.log("data", data);
       dispatch(
         createUser({
           name: data?.name,
@@ -41,7 +40,6 @@ const RegisterLayout: React.FC = () => {
       navigate("/");
     },
     onError: (error: any) => {
-      console.log("error", error.message);
       toastError(error.message);
     },
   });

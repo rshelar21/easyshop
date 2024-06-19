@@ -24,11 +24,9 @@ const CartLayout = () => {
   const mutation = useMutation({
     mutationFn: createCheckoutSession,
     onError: (error: any) => {
-      console.log("error", error);
       toastError(error.message);
     },
     onSuccess: async (data: any) => {
-      console.log("data", data);
       dispatch(
         removeCart({
           items: [],
@@ -38,7 +36,6 @@ const CartLayout = () => {
       const result = await stripe.redirectToCheckout({
         sessionId: data.id,
       });
-      console.log(result);
     },
   });
 
@@ -59,7 +56,6 @@ const CartLayout = () => {
         email: userDetails.email,
       });
     } catch (error: any) {
-      console.log(error);
       if (error?.response?.data?.message === "token expired") {
         toastWarning("Please login again");
         navigate("/login");

@@ -7,7 +7,7 @@ import ProductsCard from "./ProductsCard";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useSearchParams } from "react-router-dom";
 
-const ProductsLayout : React.FC = () => {
+const ProductsLayout: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [filterdList, setFilterdList] = useState<IProduct[]>();
 
@@ -31,7 +31,6 @@ const ProductsLayout : React.FC = () => {
     if (data && data?.products) {
       const productsArr = [...data.products];
       if (searchParams.get("q")) {
-        console.log("if");
         const result = productsArr?.filter(
           (product: IProduct) => product?.category === searchParams?.get("q")
         );
@@ -76,7 +75,6 @@ const ProductsLayout : React.FC = () => {
   ) => {
     const { value, name } = e.target;
     if (type === "price") {
-      console.log(value);
       setCheckBoxPrice(value);
     }
     if (type === "category") {
