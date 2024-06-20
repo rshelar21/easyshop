@@ -107,7 +107,6 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-
   return (
     <>
       <div
@@ -216,12 +215,14 @@ const Navbar: React.FC = () => {
               </div>
             </div>
 
-            <div className="">
-              <Link to="/orders-history" className="link">
-                <p>Orders</p>
-                <p className="md:text-sm font-extrabold">History</p>
-              </Link>
-            </div>
+            {userDetails.name ? (
+              <div className="">
+                <Link to="/orders-history" className="link">
+                  <p>Orders</p>
+                  <p className="md:text-sm font-extrabold">History</p>
+                </Link>
+              </div>
+            ) : null}
 
             <div className="relative">
               <span
