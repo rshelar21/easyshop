@@ -41,7 +41,7 @@ const CategoryCard: React.FC<{
         search: `?q=${category?.title}`,
       }}
     >
-      <div className="w-full p-2 rounded-lg shadow-lg hover:scale-110 transition-all ease-in-out cursor-pointer">
+      <div className="w-full p-2 rounded-lg shadow-lg hover:scale-110 transition-all ease-in-out cursor-pointer flex flex-col items-center">
         <div className="">
           <LazyLoadImage
             src={`/assets/${category.img}`}
