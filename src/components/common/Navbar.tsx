@@ -8,7 +8,7 @@ import { selectUser, removeUser } from "../../feature/userSlice";
 import { useQuery } from "@tanstack/react-query";
 import { logoutUser } from "../../hooks/query/auth";
 import { useDebouncedCallback } from "use-debounce";
-import { fetchProducts } from "../../hooks/query/product";
+import { queryProducts } from "../../hooks/query/product";
 import ClipLoader from "react-spinners/ClipLoader";
 import { cn } from "../../utils/cn";
 
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
     isSuccess,
   } = useQuery({
     queryKey: ["products-search", search],
-    queryFn: () => fetchProducts(search?.trim()),
+    queryFn: () => queryProducts(search?.trim()),
     enabled: false,
   });
 

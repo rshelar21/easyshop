@@ -24,7 +24,7 @@ const ProductsLayout: React.FC = () => {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
-    queryFn: () => fetchProducts(""),
+    queryFn: fetchProducts,
   });
 
   const dataList = data?.products;
