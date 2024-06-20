@@ -16,17 +16,19 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/orders-history" element={<OrdersHistoryPage />} />
-          </Routes>
-        </React.Suspense>
-        <Toaster />
+        <div className="min-h-screen">
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/orders-history" element={<OrdersHistoryPage />} />
+            </Routes>
+          </React.Suspense>
+          <Toaster />
+        </div>
         <Footer />
       </Router>
     </>
