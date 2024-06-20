@@ -66,7 +66,7 @@ const CartLayout = () => {
 
   return (
     <>
-      <div className="relative mt-[56px] p-3 min-h-screen">
+      <div className="relative mt-[96px] md:mt-[56px] p-3 min-h-screen">
         {Array.isArray(cartItem) && cartItem.length ? (
           <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
             <div className="bg-white px-4 py-5 col-span-1 md:col-span-7">

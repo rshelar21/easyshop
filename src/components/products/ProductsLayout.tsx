@@ -24,16 +24,16 @@ const ProductsLayout: React.FC = () => {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryFn: () => fetchProducts(""),
   });
 
-  const dataList = data?.products
+  const dataList = data?.products;
 
   useEffect(() => {
     if (data && dataList) {
       setProducts(dataList);
       if (searchParams.get("q")) {
-        console.log(searchParams.get("q"));
+        // console.log(searchParams.get("q"));
         const result = dataList?.filter(
           (product: IProduct) => product?.category === searchParams?.get("q")
         );
@@ -96,7 +96,7 @@ const ProductsLayout: React.FC = () => {
   };
 
   return (
-    <div className="pt-[56px] relative w-full min-h-screen">
+    <div className=" mt-[96px] md:mt-[56px] relative w-full min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0px,_260px)_minmax(0px,_3fr)] relative">
         <ProductFilters
           checkBoxPrice={checkBoxPrice}

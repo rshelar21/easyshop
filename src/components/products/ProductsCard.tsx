@@ -24,13 +24,10 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
 
-  console.log(cartItem, "cartItem");
   const handleraAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // console.log(product);
     const list = cartItem.filter(
       (item: ICart) => item?.productId === product?.productId
     );
-    console.log(list);
 
     if (list.length) {
       const index = cartItem.findIndex(

@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const HomeLayout: React.FC = () => {
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl relative mt-[56px]">
+      <div className="mx-auto max-w-screen-2xl relative mt-[96px] md:mt-[56px]">
         <Banner />
         <div className="mt-0 md:-mt-60 relative">
           <DealsSection />

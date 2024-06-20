@@ -16,9 +16,11 @@ const OrderHistoryLayout: React.FC = () => {
     queryFn: getOrdersHistory,
   });
 
+  console.log(isLoading, data);
+
   return (
     <>
-      <div className="relative mt-[56px] min-h-screen p-0 md:p-3 bg-white">
+      <div className="relative mt-[96px] md:mt-[56px] min-h-screen p-0 md:p-3 bg-white">
         <div className="bg-white px-4 py-5 w-full max-w-5xl mx-auto">
           <div className="pb-2 border-b">
             <h2 className="text-3xl">Order History</h2>
@@ -29,11 +31,15 @@ const OrderHistoryLayout: React.FC = () => {
               <div className="flex justify-center items-center w-full h-full">
                 <ClipLoader color="#36d7b7" />
               </div>
-            ) : isError ? (
-              <h1 className="text-center">
-                something went wrong, please try again later.
-              </h1>
-            ) : null}
+            ) : (
+              !data?.product?.length && (
+                <div className="flex justify-center">
+                  <h2 className="text-black text-lg font-semibold">
+                    No Orders Found
+                  </h2>
+                </div>
+              )
+            )}
             {Array.isArray(data?.product) &&
               data?.product?.map((item: IOrders, index: number) => {
                 return (
@@ -95,14 +101,6 @@ const OrderHistoryLayout: React.FC = () => {
                   </>
                 );
               })}
-
-            {!data?.product?.length && (
-              <div className="flex justify-center">
-                <h2 className="text-black text-lg font-semibold">
-                  No Orders Found
-                </h2>
-              </div>
-            )}
           </div>
         </div>
       </div>
