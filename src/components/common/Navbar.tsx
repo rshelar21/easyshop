@@ -202,11 +202,9 @@ const Navbar: React.FC = () => {
 
               <div className="absolute top-10 bg-white group-hover:opacity-100 opacity-0 p-3 w-fit rounded-sm right-2">
                 {!userDetails?.name ? (
-                  <button className="button">
-                    <Link to="/register" className="text-black">
-                      Sign in
-                    </Link>
-                  </button>
+                  <Link to="/register" className="text-black">
+                    <button className="button">Sign in</button>
+                  </Link>
                 ) : (
                   <button className="button text-black" onClick={handlerLogOut}>
                     Log Out
