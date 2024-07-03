@@ -157,34 +157,36 @@ const Navbar: React.FC = () => {
                     <ul>
                       {productData &&
                         Array.isArray(productData?.products) &&
-                        productData?.products?.map((item: any, index: number) => (
-                          <li
-                            className="hover:bg-gray-100 py-2 cursor-pointer"
-                            key={index}
-                          >
-                            <Link
-                              to={{
-                                pathname: "/products",
-                                search: `?q=${item?.category}`,
-                              }}
+                        productData?.products?.map(
+                          (item: any, index: number) => (
+                            <li
+                              className="hover:bg-gray-100 py-2 cursor-pointer"
+                              key={index}
                             >
-                              <p className="font-normal text-sm text-gray-700">
-                                {item?.title}
-                              </p>
-                            </Link>
-                          </li>
-                        ))}
+                              <Link
+                                to={{
+                                  pathname: "/products",
+                                  search: `?q=${item?.category}`,
+                                }}
+                              >
+                                <p className="font-normal text-sm text-gray-700">
+                                  {item?.title}
+                                </p>
+                              </Link>
+                            </li>
+                          )
+                        )}
                     </ul>
-                    {productDataLoading && (
+                    {productDataLoading ? (
                       <div className="flex justify-center items-center w-full h-full">
                         <ClipLoader color="#36d7b7" />
                       </div>
-                    )}
-                    {!productData?.products.length && (
+                    ) : (
                       <h1 className="text-center font-medium text-lg text-slate-600">
                         No result found
                       </h1>
                     )}
+                   
                   </div>
                 </div>
               </div>
