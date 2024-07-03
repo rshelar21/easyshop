@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
     enabled: false,
   });
 
-  console.log(productData);
+  // console.log(productData);
 
   useEffect(() => {
     handlerNavbar();
@@ -55,6 +55,8 @@ const Navbar: React.FC = () => {
       setIsOpenSearchBar(true);
     }
   }, [isSuccess]);
+
+  console.log(isSuccess);
 
   const handlerNavbar = () => {
     if (location.pathname === "/register" || location.pathname === "/login") {
@@ -181,12 +183,11 @@ const Navbar: React.FC = () => {
                       <div className="flex justify-center items-center w-full h-full">
                         <ClipLoader color="#36d7b7" />
                       </div>
-                    ) : (
+                    ) : !productData?.products.length ? (
                       <h1 className="text-center font-medium text-lg text-slate-600">
                         No result found
                       </h1>
-                    )}
-                   
+                    ) : null}
                   </div>
                 </div>
               </div>
