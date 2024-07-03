@@ -26,12 +26,12 @@ const ProductsCard: React.FC<IProductCardProps> = ({ product }) => {
 
   const handleraAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     const list = cartItem.filter(
-      (item: ICart) => item?.productId === product?.productId
+      (item: ICart) => item?.id === product?.id
     );
 
     if (list.length) {
       const index = cartItem.findIndex(
-        (item) => item?.productId === product.productId
+        (item) => item?.id === product.id
       );
       const newBasket = [...cartItem];
       if (index >= 0) {

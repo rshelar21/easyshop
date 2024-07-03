@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { queryProducts } from "../../hooks/query/product";
 import ClipLoader from "react-spinners/ClipLoader";
 import { cn } from "../../utils/cn";
+import { fetchProducts } from "../../hooks/query/product";
 
 const Navbar: React.FC = () => {
   const userDetails = useSelector(selectUser);
@@ -82,8 +83,11 @@ const Navbar: React.FC = () => {
 
   React.useEffect(() => {
     if (search.trim() !== "") {
-      console.log("search", search);
+      // console.log("search", search);
+      setIsOpenSearchBar(true);
       debouncedRefetch();
+    } else {
+      setIsOpenSearchBar(false);
     }
   }, [search]);
 
@@ -142,53 +146,49 @@ const Navbar: React.FC = () => {
               />
               <MagnifyingGlassIcon className="h-6 w-14" />
             </div>
-            {productData &&
-              Array.isArray(productData?.products) &&
-              isOpenSearchBar && (
-                <div
-                  className="w-full h-full absolute inset-0 top-11 px-0 md:px-3"
-                  ref={searchRef}
-                >
-                  <div className="bg-white rounded-bl-lg rounded-br-lg px-2 py-4 shadow-lg">
-                    <h3 className="font-semibold text-lg">Search Result</h3>
-                    <div className="">
-                      <ul>
-                        {productData &&
-                          Array.isArray(productData?.products) &&
-                          productData?.products?.map(
-                            (item: any, index: number) => (
-                              <li
-                                className="hover:bg-gray-100 py-2 cursor-pointer"
-                                key={index}
-                              >
-                                <Link
-                                  to={{
-                                    pathname: "/products",
-                                    search: `?q=${item?.category}`,
-                                  }}
-                                >
-                                  <p className="font-normal text-sm text-gray-700">
-                                    {item?.title}
-                                  </p>
-                                </Link>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                      {productDataLoading && (
-                        <div className="flex justify-center items-center w-full h-full">
-                          <ClipLoader color="#36d7b7" />
-                        </div>
-                      )}
-                      {!productData?.products.length && (
-                        <h1 className="text-center font-medium text-lg text-slate-600">
-                          No result found
-                        </h1>
-                      )}
-                    </div>
+            {isOpenSearchBar && (
+              <div
+                className="w-full h-full absolute inset-0 top-11 px-0 md:px-3"
+                ref={searchRef}
+              >
+                <div className="bg-white rounded-bl-lg rounded-br-lg px-2 py-4 shadow-lg">
+                  <h3 className="font-semibold text-lg">Search Result</h3>
+                  <div className="">
+                    <ul>
+                      {productData &&
+                        Array.isArray(productData?.products) &&
+                        productData?.products?.map((item: any, index: number) => (
+                          <li
+                            className="hover:bg-gray-100 py-2 cursor-pointer"
+                            key={index}
+                          >
+                            <Link
+                              to={{
+                                pathname: "/products",
+                                search: `?q=${item?.category}`,
+                              }}
+                            >
+                              <p className="font-normal text-sm text-gray-700">
+                                {item?.title}
+                              </p>
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                    {productDataLoading && (
+                      <div className="flex justify-center items-center w-full h-full">
+                        <ClipLoader color="#36d7b7" />
+                      </div>
+                    )}
+                    {!productData?.products.length && (
+                      <h1 className="text-center font-medium text-lg text-slate-600">
+                        No result found
+                      </h1>
+                    )}
                   </div>
                 </div>
-              )}
+              </div>
+            )}
           </div>
 
           {/* right */}
@@ -239,21 +239,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* <div className="bg-amazon_blue md:hidden px-2 pb-2">
-          <div
-            className="flex bg-yellow-400 rounded-sm overflow-hidden
-            items-center cursor-pointer hover:bg-yellow-500"
-          >
-            <input
-              type="text"
-              placeholder="Search product name..."
-              className="w-full outline-none placeholder:text-gray-500 p-2
-                px-3
-                "
-            />
-            <MagnifyingGlassIcon className="h-6 w-14" />
-          </div>
-        </div> */}
       </div>
     </>
   );

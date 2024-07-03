@@ -21,7 +21,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
     type?: string
   ) => {
     let productData = [];
-    const index = cartItems.findIndex((item) => item.productId === id);
+    const index = cartItems.findIndex((item) => item.id === id);
     const newBasket = [...cartItems];
     if (index >= 0) {
       newBasket.splice(index, 1);
@@ -100,7 +100,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
                   <div>
                     <button
                       className="button"
-                      onClick={(e) => handlerRemoveItem(e, Number(product?.productId), "reduce")}
+                      onClick={(e) => handlerRemoveItem(e, Number(product?.id), "reduce")}
                     >
                       <HiOutlineMinusSm />
                     </button>
@@ -108,7 +108,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
                     <button
                       className="button"
                       onClick={(e) =>
-                        handlerRemoveItem(e, Number(product?.productId), "add")
+                        handlerRemoveItem(e, Number(product?.id), "add")
                       }
                     >
                       <HiOutlinePlusSm />
@@ -121,7 +121,7 @@ const CartProdocts: React.FC<Props> = ({ product }) => {
             <div className="">
               <button
                 className="whitespace-nowrap button"
-                onClick={(e) => handlerRemoveItem(e, Number(product?.productId), "delete")}
+                onClick={(e) => handlerRemoveItem(e, Number(product?.id), "delete")}
               >
                 Remove from cart
               </button>
